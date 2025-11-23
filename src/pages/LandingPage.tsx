@@ -6,7 +6,7 @@ import { useState } from "react";
 export const LandingPage = () => {
     const navigate = useNavigate();
     const [copied, setCopied] = useState(false);
-    const wallet = "officell";
+    const wallet = "founderofficell@gmail.com";
 
     const handleCopy = () => {
         navigator.clipboard.writeText(wallet);
@@ -69,7 +69,7 @@ export const LandingPage = () => {
                     onClick={handleCopy}
                     className="text-white font-arimo text-xl tracking-wide opacity-80 flex items-center gap-2 hover:opacity-100"
                 >
-                    Founder's wallet: {wallet}
+                    Founder's Email: {wallet}
                     <span className="text-lg">📋</span>
 
                     {copied && (

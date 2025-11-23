@@ -1,18 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import DecryptedText from "../styles/DecryptedText"
 import ScrollVelocity from "../styles/ScrollVelocity";
-import { useState } from "react";
 
 export const LandingPage = () => {
     const navigate = useNavigate();
-    const [copied, setCopied] = useState(false);
     const wallet = "founderofficell@gmail.com";
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(wallet);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1000);
-    };
 
     return (
     <div className="bg-gray-950 w-screen min-h-screen">
@@ -66,17 +58,9 @@ export const LandingPage = () => {
                 </div>
         <div className="mt-8 flex justify-center">
                 <button
-                    onClick={handleCopy}
                     className="text-white font-arimo text-xl tracking-wide opacity-80 flex items-center gap-2 hover:opacity-100"
                 >
                     Founder's Email: {wallet}
-                    <span className="text-lg">📋</span>
-
-                    {copied && (
-                        <span className="text-white text-lg  animate-fade">
-                            Copied!
-                        </span>
-                    )}
                 </button>
             </div>
         </div>

@@ -1,7 +1,6 @@
 // src/components/CommentCard.jsx
 import {  useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import { toast } from 'react-toastify';
 import useCommentStore from "../../store/commentStore";
@@ -39,14 +38,10 @@ export const CommentCard = ({ comment , user_id}) => {
         return;
     }
     try {
-      const token = Cookies.get("Auth");
-      const headers={
-          'Authorization': `Bearer ${token}`
-      }
+     
       const  {data:response }= await axios.post(`${import.meta.env.VITE_API}/comments/${comment.id}/subcomments`, {
           subcomment: replyText
         },{
-          headers:headers,
           withCredentials: true
       });
       addSubComment(response.subcomment)
@@ -60,13 +55,8 @@ export const CommentCard = ({ comment , user_id}) => {
     try {
       setDisableSubmitBtn(true);
           setDeletingComment(true);
-        const token =  Cookies.get("Auth");
-        const headers={
-          'Authorization': `Bearer ${token}`
-      }
 
       await axios.delete(`${import.meta.env.VITE_API}/comments/${comment.id}?vent_id=${comment.vent_id}`,{
-        headers: headers,
         withCredentials: true
       });
 
@@ -106,12 +96,7 @@ export const CommentCard = ({ comment , user_id}) => {
     try {
         setDeletingComment(true);
         setDisableSubmitBtn(true);
-        const token =  Cookies.get("Auth");
-        const headers={
-          'Authorization': `Bearer ${token}`
-      }
       await axios.delete(`${import.meta.env.VITE_API}/subcomments/${subcommentId}`,{
-        headers: headers,
                   withCredentials: true
       });
       deleteSubComment( subcommentId, comment.id);

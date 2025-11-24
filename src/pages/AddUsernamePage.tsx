@@ -3,7 +3,6 @@ import { FaUser } from "react-icons/fa";
 import { CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 export default function AddUsernamePage() {
 
@@ -15,18 +14,10 @@ export default function AddUsernamePage() {
     if (username.trim()) {
 
       setStep(3);
-      const token =  Cookies.get("Auth");
-      const headers={
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-
       await axios.post(`${import.meta.env.VITE_API}/add-username`, {
         new_username: username
       },{
-          headers:headers,
           withCredentials: true
-
       });
       setTimeout(() => {
         navigate("/feed");

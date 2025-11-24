@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import useVentStore from "../../store/ventStore";
-import Cookies from 'js-cookie';
 import useTrendingVentStore from "../../store/trendingventStore";
 import useCompanyVentStore from "../../store/companyventStore";
 import useProfileVentStore from "../../store/profileventStore";
@@ -21,14 +20,9 @@ const RefreshFeed = () => {
 
         const fetchDbVents = async()=>{
             try {
-            const token =  Cookies.get("Auth");
-            const headers={
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+            
             const lastCreatedAt = vents.sort((a , b  )=> a.createdAt > b.createdAt ? -1: 1)[0];
             const {data: response } = await axios.get(`${import.meta.env.VITE_API}/vents/count?lastcreatedAt=${lastCreatedAt.createdAt}`,{
-                headers: headers,
                 withCredentials: true
             });
             if (response.count_vents > 10){

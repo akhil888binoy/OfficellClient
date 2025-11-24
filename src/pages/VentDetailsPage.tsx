@@ -3,7 +3,6 @@ import { CommentSection } from "../components/comment/CommentSection";
 import { Sidebar } from "../components/common/Sidebar";
 import { VentCard } from "../components/vent/VentCard";
 import { useEffect, useState } from "react";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import { CommentCard } from "../components/comment/CommentCard";
 import { UserCard } from "../components/user/UserCard";
@@ -66,13 +65,8 @@ export const VentDetailsPage = () => {
           setLoadingMore(true);
         }
         
-        const token = Cookies.get("Auth");
-        const headers = {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        };
+      
         const { data: commentsJson } = await axios.get(`${import.meta.env.VITE_API}/vents/${id}/comments?skip=${skip}`, {
-          headers: headers,
           withCredentials: true
         });
         

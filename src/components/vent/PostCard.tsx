@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdOutlineAttachFile, MdOutlineCategory } from "react-icons/md"
 import { RiBuilding2Line } from "react-icons/ri"
-import Cookies from 'js-cookie';
 import axios from 'axios';
 import CompanySearchBar from "../company/CompanySearchBar";
 import { CompanySearchCard } from "../company/CompanySearchCard";
@@ -100,10 +99,7 @@ const PostCard = () => {
       }
     try {
       setPostLoading(true)
-      const token =  Cookies.get("Auth");
-      const headers={
-        'Authorization': `Bearer ${token}`
-      }
+      
       const formData = new FormData();
       formData.append('content', post);
       formData.append('company_id', company_id);
@@ -112,7 +108,6 @@ const PostCard = () => {
       if (selectedMedia)
       formData.append('file', selectedMedia); 
       const  {data: response} = await axios.post(`${import.meta.env.VITE_API}/vents`, formData, {
-          headers:headers,
           withCredentials: true
       });
       setPostLoading(false);
@@ -208,14 +203,9 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
           setLoadingMore(true);
         }
         
-        const token = Cookies.get("Auth");
-        const headers = {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        };
+        
 
         const { data: companiesJson } = await axios.get(`${import.meta.env.VITE_API}/companies?skip=${skip}&company_name=${search}`, {
-          headers: headers,
           withCredentials: true
         });
         

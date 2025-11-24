@@ -1,6 +1,5 @@
 // src/components/CommentSection.jsx
 import { useState } from "react";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import useCommentStore from "../../store/commentStore";
@@ -31,14 +30,10 @@ export const CommentSection = ({ vent_id }: CommentSectionProps) => {
     }
       try {
         setLoading(true);
-        const token = Cookies.get("Auth");
-        const headers={
-          'Authorization': `Bearer ${token}`
-        }
+      
         const  {data:response} = await axios.post(`${import.meta.env.VITE_API}/vents/${vent_id}/comments`, {
           comment: newComment
         },{
-          headers:headers,
                     withCredentials: true
       });
       setLoading(false);

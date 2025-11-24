@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Cookies from 'js-cookie';
 import useCompanyStore from "../../store/companyStore";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -15,15 +14,10 @@ const RefreshCompanies = () => {
 
         const fetchDbCompanies = async()=>{
             try {
-            const token =  Cookies.get("Auth");
-            const headers={
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+           
     
             const lastCreatedAt = companies.sort((a,b)=> a.createdAt > b.createdAt ? -1: 1)[0];
             const {data: response } = await axios.get(`${import.meta.env.VITE_API}/companies/count?lastcreatedAt=${lastCreatedAt.createdAt}`,{
-                headers: headers,
                 withCredentials: true
             });
             if (response.count_companies > 10){

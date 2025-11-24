@@ -4,7 +4,6 @@ import { CompanyCategoryM } from "../components/company/mobile/CompanyCategoryM"
 import CompanySearchBar from "../components/company/CompanySearchBar";
 import { CompanyCard } from "../components/company/CompanyCard";
 import { useEffect, useRef, useState } from "react";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import AddCompany from "../components/company/AddCompany";
 import useCompanyStore from "../store/companyStore";
@@ -102,13 +101,9 @@ export const CompaniesPage = () => {
           addloadingMore(true);
         }
         
-        const token = Cookies.get("Auth");
-        const headers = {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        };
+       
         const { data: companiesJson } = await axios.get(`${import.meta.env.VITE_API}/companies?skip=${skip}&company_name=${search}&industry=${category}&place=${region ? region.value:''}&searchcountry=${country? country.key:''}`, {
-          headers, signal: controller.signal , withCredentials: true
+         signal: controller.signal , withCredentials: true
         });
         
         const newCompanies = companiesJson.companies;

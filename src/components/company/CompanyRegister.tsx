@@ -1,7 +1,6 @@
 import Select from 'react-select';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import * as Yup from "yup";
 import { categories } from '../../utils/companyCategory';
@@ -152,10 +151,7 @@ if(!domain){
         return
       }
     try {
-      const token = Cookies.get("Auth");
-      const headers={
-        'Authorization': `Bearer ${token}`
-      }
+     
        await axios.post(`${import.meta.env.VITE_API}/companies`, {
         name: companyName,
         domain : domain,
@@ -163,7 +159,6 @@ if(!domain){
         city: region?.value,
         country: country?.key
       },{
-          headers:headers,
                   withCredentials: true
       });
       setCompanyName("");

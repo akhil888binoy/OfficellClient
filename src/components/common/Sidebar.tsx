@@ -5,7 +5,6 @@ import { VscAccount } from "react-icons/vsc";
 import { FaFireAlt } from 'react-icons/fa';
 import { RiBuilding2Line } from 'react-icons/ri';
 import { BiMessageDetail } from 'react-icons/bi';
-import Cookies from 'js-cookie';
 import {   useLocation, useNavigate } from 'react-router-dom';
 import useVentStore from '../../store/ventStore';
 import useCompanyStore from '../../store/companyStore';
@@ -63,9 +62,6 @@ export const Sidebar = () => {
   
 
   const handleLogout = ()=>{
-      Cookies.remove("Auth");
-      Cookies.remove("refreshToken");
-      Cookies.remove("RefreshExist")
       logoutVent();
       logoutProfileVent();
       logoutCompanyVent();

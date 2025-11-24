@@ -8,7 +8,6 @@ import { Sidebar } from "../components/common/Sidebar";
 import { UserCard } from "../components/user/UserCard";
 import  {VentCard } from "../components/vent/VentCard";
 import { useEffect, useRef, useState } from "react";
-import Cookies from 'js-cookie';
 import axios from "axios";
 import useUserStore from "../store/userStore";
 import useCompanyStore from "../store/companyStore";
@@ -56,13 +55,9 @@ useEffect(() => {
           addloadingMore(true);
         }
         
-        const token = Cookies.get("Auth");
-        const headers = {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        };
+      
         const { data: ventsJson } = await axios.get(`${import.meta.env.VITE_API}/vents?skip=${skip}&company_id=${id}&category=${category}`, {
-          headers, signal: controller.signal , withCredentials: true
+          signal: controller.signal , withCredentials: true
         });
         
           if (ventsJson.vents.length < PAGE_SIZE) {

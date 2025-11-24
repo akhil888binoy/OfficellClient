@@ -13,9 +13,9 @@ import RegisterCompanyPage from './pages/RegisterCompanyPage';
 import AddUsernamePage from './pages/AddUsernamePage';
 import NotFoundPage from './pages/NotFoundPage';
 import { TrendingPage } from './pages/TrendingPage';
-import Cookies from 'js-cookie';
 import SessionExpiredPage from './pages/SessionExpiredPage';
 import LandscapePrompt from './components/common/LandScapePrompt';
+import Cookies from "js-cookie";
 
 function App() {
   

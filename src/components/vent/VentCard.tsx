@@ -3,7 +3,6 @@ import { RiBuilding2Line } from "react-icons/ri";
 import { MdLocationOn } from "react-icons/md";
 import moment from 'moment';
 import { forwardRef, useEffect, useState, type Ref } from "react";
-import Cookies from 'js-cookie';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getName } from "country-list";
@@ -66,10 +65,7 @@ const cleanCountryName = (name: string | undefined) => {
 const handleDownvote=async ()=>{
   try {
       setDisableSubmitBtn(true)
-      const token =  Cookies.get("Auth");
-      const headers={
-        'Authorization': `Bearer ${token}`
-      };
+      
       let voteenum;
       const vote = votes.find((vote)=> vote.user_id === user_id);
         if(vote){
@@ -92,7 +88,6 @@ const handleDownvote=async ()=>{
         downVoteTrending(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         downVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
       await axios.post(`${import.meta.env.VITE_API}/vents/${id}/downvote`,"",{
-          headers:headers,
           withCredentials: true
       });
 
@@ -117,10 +112,6 @@ const handleDownvote=async ()=>{
   const handleUpvote= async ()=>{
     try {
         setDisableSubmitBtn(true);
-        const token =  Cookies.get("Auth");
-        const headers={
-          'Authorization': `Bearer ${token}`
-        };
         let voteenum;
 
         const vote = votes.find((vote)=> vote.user_id === user_id);
@@ -145,7 +136,6 @@ const handleDownvote=async ()=>{
         upVoteTrending(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         upVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
        await axios.post(`${import.meta.env.VITE_API}/vents/${id}/upvote`,"",{
-            headers:headers,
             withCredentials: true
 
         });
@@ -171,13 +161,8 @@ const handleDeleteVent =async()=>{
   try {
       setDisableSubmitBtn(true);
       setDeletingComment(true);
-      const token =  Cookies.get("Auth");
-      const headers={
-        'Authorization': `Bearer ${token}`
-      };
       await axios.delete(`${import.meta.env.VITE_API}/vents/${id}`,{
-          headers:headers,
-                    withCredentials: true
+          withCredentials: true
       });
     deleteVent(id);
     deleteProfileVent(id);

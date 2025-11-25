@@ -313,7 +313,7 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
+  <div className="fixed inset-x-0 top-10 z-10 flex justify-center p-2 sm:p-4">
     <DialogPanel
       transition
       className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
@@ -397,7 +397,7 @@ transition-all sm:rounded-2xl
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
+  <div className="fixed inset-x-0 top-10 z-10 flex justify-center p-2 sm:p-4">
     <DialogPanel
       transition
       className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
@@ -469,12 +469,12 @@ transition-all sm:rounded-2xl
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
+  <div className="fixed inset-x-0 top-10 z-10 flex justify-center p-2 sm:p-4">
     <DialogPanel
       transition
       className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
-rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
-transition-all sm:rounded-2xl
+        rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
+        transition-all sm:rounded-2xl
         data-closed:translate-y-4 data-closed:opacity-0 
         data-enter:duration-300 data-enter:ease-out 
         data-leave:duration-200 data-leave:ease-in 
@@ -491,7 +491,7 @@ transition-all sm:rounded-2xl
             }} 
           />
       {/* Body */}
-      <div className=" p-3 sm:p-4 flex-1 overflow-y-auto max-h-[65vh] sm:max-h-[70vh] border-t border-gray-800 space-y-4">
+      <div className=" p-3 sm:p-4 flex-1 overflow-y-auto max-h-[55vh] sm:max-h-[65vh] border-t border-gray-800 space-y-4">
         {loading && companies.length === 0 && (
           <div className="flex justify-center items-center h-full">
             <Shuffle

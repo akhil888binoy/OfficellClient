@@ -391,51 +391,60 @@ transition-all sm:rounded-2xl
 </Dialog>
 
 
-  <Dialog open={openCategory} onClose={setOpenCategory} className="relative z-10">
+<Dialog open={openCategory} onClose={setOpenCategory} className="relative z-10">
+  {/* Backdrop */}
   <DialogBackdrop
     transition
-    className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+    className="fixed inset-0 bg-gray-950/70 transition-opacity
+      data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out
+      data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-x-0 top-10 z-10 flex justify-center p-2 sm:p-4">
+  {/* Modal Container */}
+  <div className="fixed inset-x-0 top-6 sm:top-10 z-20 flex justify-center px-2 sm:px-4">
     <DialogPanel
       transition
-      className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
-rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
-transition-all sm:rounded-2xl
-        data-closed:translate-y-4 data-closed:opacity-0 
-        data-enter:duration-300 data-enter:ease-out 
-        data-leave:duration-200 data-leave:ease-in 
-        data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+      className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden
+      rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10
+      transition-all sm:rounded-2xl
+      data-closed:translate-y-4 data-closed:opacity-0
+      data-enter:duration-300 data-enter:ease-out
+      data-leave:duration-200 data-leave:ease-in
+      data-closed:sm:translate-y-0 data-closed:sm:scale-95"
     >
       {/* Header */}
-      <div className="bg-gray-950 px-4 sm:px-6 pt-5 pb-4">
-        <DialogTitle as="h3" className="text-lg font-dmsans tracking-[1px] text-white">
+      <div className="px-4 sm:px-6 pt-4 pb-2">
+        <DialogTitle
+          as="h3"
+          className="text-base sm:text-lg font-dmsans tracking-[1px] text-white"
+        >
           Choose a category
         </DialogTitle>
+      </div>
 
-        <div className="mt-4 flex flex-col gap-3">
-          {categories.map((cat, index) => (
-            <button
-              onClick={handleAddCategory}
-              key={index}
-              value={cat.name}
-              className={`flex items-center gap-3 px-3 sm:px-4 py-2 sm:py-3 text-sm   rounded-xl
-                bg-gray-800 text-gray-200 font-dmsans tracking-[1px] font-light
-                hover:bg-gray-700 hover:border-gray-500 hover:scale-[1.02] 
-                active:scale-95 active:bg-gray-600
-                transition-all duration-200 ease-in-out
-                shadow-sm ${category === cat.name ? 'border border-white' : ''}`}
-            >
-              <span className="text-sm ">{cat.icon}</span>
-              {cat.name}
-            </button>
-          ))}
-        </div>
+      {/* Scrollable Body */}
+      <div className="px-4 sm:px-6 pb-2 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto space-y-3">
+        {categories.map((cat, index) => (
+          <button
+            onClick={handleAddCategory}
+            key={index}
+            value={cat.name}
+            className={`flex items-center gap-3 px-4 py-3 text-sm rounded-xl
+              bg-gray-800 text-gray-200 font-dmsans tracking-[1px]
+              hover:bg-gray-700 hover:border-gray-500 hover:scale-[1.02]
+              active:scale-95 active:bg-gray-600 transition-all duration-200
+              shadow-sm ${
+                category === cat.name ? "border border-white" : "border border-transparent"
+              }`}
+          >
+            <span className="text-base">{cat.icon}</span>
+            {cat.name}
+          </button>
+        ))}
       </div>
 
       {/* Footer */}
-      <div className="bg-gray-950 px-4 sm:px-6 py-3 flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0">
+      <div className="bg-gray-950 px-4 sm:px-6 py-3 flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0 border-t border-gray-800">
         <button
           type="button"
           onClick={() => setOpenCategory(false)}

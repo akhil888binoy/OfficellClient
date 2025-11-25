@@ -425,21 +425,29 @@ transition-all sm:rounded-2xl
       {/* Scrollable Body */}
       <div className="px-4 sm:px-6 pb-2 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto space-y-3">
         {categories.map((cat, index) => (
-          <button
-            onClick={handleAddCategory}
-            key={index}
-            value={cat.name}
-            className={`flex items-center gap-3 px-4 py-3 text-sm rounded-xl
-              bg-gray-800 text-gray-200 font-dmsans tracking-[1px]
-              hover:bg-gray-700 hover:border-gray-500 hover:scale-[1.02]
-              active:scale-95 active:bg-gray-600 transition-all duration-200
-              shadow-sm ${
-                category === cat.name ? "border border-white" : "border border-transparent"
-              }`}
-          >
-            <span className="text-base">{cat.icon}</span>
-            {cat.name}
-          </button>
+                      <button
+                onClick={handleAddCategory}
+                key={index}
+                value={cat.name}
+                className={`
+                  flex items-center gap-4 p-4 rounded-2xl w-full
+                  bg-gray-900/60 text-gray-200 font-dmsans tracking-[0.5px]
+                  border border-gray-800
+                  shadow-sm
+
+                  hover:bg-gray-800 hover:border-gray-700 hover:shadow-md
+                  active:scale-[0.97]
+
+                  transition-all duration-200 ease-out
+                  ${category === cat.name ? "border-white bg-gray-800" : ""}
+                `}
+              >
+                {/* Icon */}
+                <span className="text-xl sm:text-2xl opacity-90">{cat.icon}</span>
+
+                {/* Name */}
+                <span className="text-sm sm:text-base font-light">{cat.name}</span>
+              </button>
         ))}
       </div>
 

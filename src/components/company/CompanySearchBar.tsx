@@ -8,7 +8,7 @@ interface CompanySearchBarProps {
 export default function CompanySearchBar({ search, onSearch }: CompanySearchBarProps) {
   return (
   <div className="flex items-center w-full max-w-sm mx-auto bg-gray-950 
-        mt-3 mb-3 border rounded-2xl border-gray-700 px-3 py-2 text-sm">
+        mt-3 mb-3 border rounded-2xl lg:border-gray-700 px-3 py-2 text-sm">
       <FaSearch className="text-gray-400 mr-3 text-lg" />
       <input
         value={search}

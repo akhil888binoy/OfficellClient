@@ -491,7 +491,7 @@ transition-all sm:rounded-2xl
             }} 
           />
       {/* Body */}
-      <div className="p-4 md:p-5 flex-1 overflow-y-auto h-[60vh] border-t border-gray-800 space-y-4">
+      <div className=" p-3 sm:p-4 flex-1 overflow-y-auto max-h-[65vh] sm:max-h-[70vh] border-t border-gray-800 space-y-4">
         {loading && companies.length === 0 && (
           <div className="flex justify-center items-center h-full">
             <Shuffle

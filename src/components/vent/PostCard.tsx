@@ -523,7 +523,7 @@ transition-all sm:rounded-2xl
             <div
               key={index}
               className={`transition cursor-pointer ${
-                company_id === company.id ? "border border-gray-200" : "border border-transparent"
+                company_id === company.id ? "border border-gray-200 rounded-xl" : "border border-transparent"
               }`}
               onClick={() => {
                 addCompanyId(company.id);

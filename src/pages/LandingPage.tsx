@@ -58,9 +58,9 @@ export const LandingPage = () => {
                 </div>
         <div className="mt-8 flex justify-center">
                 <button
-                    className="text-white font-arimo text-xl tracking-wide opacity-80 flex items-center gap-2 hover:opacity-100"
+                    className="text-white font-arimo text-sm lg:text-xl tracking-wide opacity-80 flex items-center gap-2 hover:opacity-100"
                 >
-                    Founder's Email: {wallet}
+                {wallet}
                 </button>
             </div>
         </div>

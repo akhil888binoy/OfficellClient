@@ -426,28 +426,36 @@ transition-all sm:rounded-2xl
       <div className="px-4 sm:px-6 pb-2 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto space-y-3">
         {categories.map((cat, index) => (
                       <button
-                onClick={handleAddCategory}
-                key={index}
-                value={cat.name}
-                className={`
-                  flex items-center gap-4 p-4 rounded-2xl w-full
-                  bg-gray-900/60 text-gray-200 font-dmsans tracking-[0.5px]
-                  border border-gray-800
-                  shadow-sm
+            onClick={handleAddCategory}
+            key={index}
+            value={cat.name}
+            className={`
+              flex items-center gap-2 sm:gap-4 
+              p-2.5 sm:p-4 
+              rounded-xl sm:rounded-2xl 
+              w-full
 
-                  hover:bg-gray-800 hover:border-gray-700 hover:shadow-md
-                  active:scale-[0.97]
+              bg-gray-900/60 text-gray-200 font-dmsans tracking-[0.3px]
+              border border-gray-800 shadow-sm
 
-                  transition-all duration-200 ease-out
-                  ${category === cat.name ? "border-white bg-gray-800" : ""}
-                `}
-              >
-                {/* Icon */}
-                <span className="text-xl sm:text-2xl opacity-90">{cat.icon}</span>
+              hover:bg-gray-800 hover:border-gray-700 hover:shadow-md
+              active:scale-[0.98]
+              transition-all duration-200 ease-out
 
-                {/* Name */}
-                <span className="text-sm sm:text-base font-light">{cat.name}</span>
-              </button>
+              ${category === cat.name ? "border-white bg-gray-800" : ""}
+            `}
+          >
+            {/* Icon */}
+            <span className="text-lg sm:text-2xl opacity-90">
+              {cat.icon}
+            </span>
+
+            {/* Name */}
+            <span className="text-sm sm:text-base font-light">
+              {cat.name}
+            </span>
+          </button>
+
         ))}
       </div>
 

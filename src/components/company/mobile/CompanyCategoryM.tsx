@@ -129,7 +129,7 @@ export const CompanyCategoryM = ({ category, onSelect }) => {
           </div>
 
           {/* Category List */}
-          <div className="w-full bg-gray-950 overflow-y-auto no-scrollbar mt-3">
+          <div className="w-full bg-gray-950 overflow-y-scroll no-scrollbar mt-3">
             <h2 className="px-4 pt-4 text-md font-dmsans text-white tracking-[1px]">
               Company Categories
             </h2>

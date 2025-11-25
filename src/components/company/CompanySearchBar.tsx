@@ -7,14 +7,15 @@ interface CompanySearchBarProps {
 
 export default function CompanySearchBar({ search, onSearch }: CompanySearchBarProps) {
   return (
-    <div className="flex items-center w-[90%] sm:w-[80%] md:w-[70%] lg:w-full max-w-md mx-auto bg-gray-950 mt-5 mb-5 border rounded-4xl border-gray-700 px-3 py-2">
+    <div className="flex items-center w-full max-w-sm mx-auto bg-gray-950 
+mt-3 mb-3 border rounded-2xl border-gray-700 px-3 py-2 text-sm">
       <FaSearch className="text-gray-400 mr-3 text-lg" />
       <input
         value={search}
         type="text"
         placeholder="Search companies..."
         onChange={(e) => onSearch(e.target.value)}
-        className="w-full bg-gray-950 text-gray-200 placeholder-gray-500 focus:outline-none"
+        className="w-full bg-gray-950 text-gray-200 placeholder-gray-500 text-sm" 
       />
     </div>
   );

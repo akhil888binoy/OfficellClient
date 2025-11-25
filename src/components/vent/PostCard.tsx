@@ -313,10 +313,12 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-2 sm:p-4">
+  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
     <DialogPanel
       transition
-      className="relative w-full max-w-[90%] sm:max-w-lg mx-auto transform overflow-hidden rounded-lg bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 transition-all
+      className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
+rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
+transition-all sm:rounded-2xl
         data-closed:translate-y-4 data-closed:opacity-0 
         data-enter:duration-300 data-enter:ease-out 
         data-leave:duration-200 data-leave:ease-in 
@@ -395,10 +397,12 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-2 sm:p-4">
+  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
     <DialogPanel
       transition
-      className="relative w-full max-w-[90%] sm:max-w-lg mx-auto transform overflow-hidden rounded-lg bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 transition-all
+      className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
+rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
+transition-all sm:rounded-2xl
         data-closed:translate-y-4 data-closed:opacity-0 
         data-enter:duration-300 data-enter:ease-out 
         data-leave:duration-200 data-leave:ease-in 
@@ -465,10 +469,12 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
     className="fixed inset-0 bg-gray-950/70 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
   />
 
-  <div className="fixed inset-0 z-10 flex items-center justify-center p-2 sm:p-4">
+  <div className="fixed inset-0 z-10 flex items-center justify-center p-1 xs:p-2 sm:p-4">
     <DialogPanel
       transition
-      className="relative w-full max-w-[90%] sm:max-w-lg mx-auto transform overflow-hidden rounded-lg bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 transition-all
+      className="relative w-full max-w-[95%] sm:max-w-lg mx-auto transform overflow-hidden 
+rounded-xl bg-gray-950 shadow-xl outline -outline-offset-1 outline-white/10 
+transition-all sm:rounded-2xl
         data-closed:translate-y-4 data-closed:opacity-0 
         data-enter:duration-300 data-enter:ease-out 
         data-leave:duration-200 data-leave:ease-in 

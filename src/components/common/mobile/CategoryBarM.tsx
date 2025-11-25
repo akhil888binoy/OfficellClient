@@ -65,7 +65,7 @@ export const CategoryBarM = ({ category, onSelect }: CategoryBarProps) => {
           </h1>
 
           {/* --- Category Section --- */}
-          <div className="mt-3 overflow-y-auto no-scrollbar bg-gray-950 flex-1">
+          <div className="mt-3 overflow-y-scroll no-scrollbar bg-gray-950 flex-1">
             <h2 className="px-4 pt-4 text-sm font-dmsans text-white tracking-[1px]">
               Categories
             </h2>

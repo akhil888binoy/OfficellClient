@@ -97,40 +97,45 @@ upVote: (id, user_id, votedata) => {
     const vents = get().vents;
     const updatedVents = vents.map((vent) => {
         if (vent.id === id) {
-            const existingVote = vent.votes.find(vote => vote.user_id === user_id);
+            // Find existing vote by this user
+            const existingVote = vent.votes.find((vote) => vote.user_id === user_id);
             
-            if (votedata.vote === 'NOVOTE') {
-                // User is removing their upvote
+            if (votedata.vote === 'NOVOTE'){
                 return {
                     ...vent,
                     upvote: Number(vent.upvote) - 1,
-                    votes: vent.votes.map((vote) => {
-                        if (vote.user_id === user_id) {
-                            return { ...vote, vote: 'NOVOTE' };
+                    votes: vent.votes.map((vote)=>{
+                        if(vote.user_id === user_id){
+                            return{
+                                ...vote,
+                                vote:'NOVOTE'
+                            }
                         }
-                        return vote;
+                        return vote
                     })
                 };
-            } else if (votedata.vote === 'UPVOTE') {
-                const existDownVote = vent.votes.find(
-                    (vote) => vote.user_id === user_id && vote.vote === 'DOWNVOTE'
-                );
+            } else if (votedata.vote === 'UPVOTE'){
+                // Check if user already has an UPVOTE - if so, don't increment again
+                const hadUpvote = existingVote?.vote === 'UPVOTE';
+                const hadDownvote = existingVote?.vote === 'DOWNVOTE';
                 
-                // Check if user has never voted before
-                const isNewVote = !existingVote || existingVote.vote === 'NOVOTE';
-                
-                return {
+                return{
                     ...vent,
-                    upvote: Number(vent.upvote) + 1,
-                    downvote: existDownVote ? Number(vent.downvote) - 1 : Number(vent.downvote),
+                    // Only increment if user didn't already have an upvote
+                    upvote: hadUpvote ? Number(vent.upvote) : Number(vent.upvote) + 1,
+                    // Decrement downvote if user had a downvote
+                    downvote: hadDownvote ? Number(vent.downvote) - 1 : Number(vent.downvote),
                     votes: (() => {
                         let userFound = false;
                         const updatedVotes = vent.votes.map((vote) => {
-                            if (vote.user_id === user_id) {
+                            if(vote.user_id === user_id){
                                 userFound = true;
-                                return { ...vote, vote: 'UPVOTE' };
+                                return{
+                                    ...vote,
+                                    vote:'UPVOTE'
+                                }
                             }
-                            return vote;
+                            return vote
                         });
                         
                         if (!userFound) {
@@ -138,13 +143,13 @@ upVote: (id, user_id, votedata) => {
                         }
                         return updatedVotes;
                     })()
-                };
+                }
             }
         }
         return vent;
     });
     set({ vents: updatedVents });
-}, 
+},
 downVote: (id, user_id, votedata) => {
         const vents = get().vents;
             const updatedVents = vents.map((vent) => {

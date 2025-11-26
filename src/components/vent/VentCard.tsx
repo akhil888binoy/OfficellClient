@@ -113,7 +113,6 @@ const handleDownvote=async ()=>{
     try {
         setDisableSubmitBtn(true);
         let voteenum;
-
         const vote = votes.find((vote)=> vote.user_id === user_id);
         if(vote){
           if(vote.vote === 'NOVOTE' || vote.vote === 'DOWNVOTE'){
@@ -135,7 +134,7 @@ const handleDownvote=async ()=>{
         upVoteProfile(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         upVoteTrending(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         upVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-       await axios.post(`${import.meta.env.VITE_API}/vents/${id}/upvote`,"",{
+        await axios.post(`${import.meta.env.VITE_API}/vents/${id}/upvote`,"",{
             withCredentials: true
 
         });

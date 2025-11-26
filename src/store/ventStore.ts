@@ -112,7 +112,9 @@ const ventStore=(set,get): VentState=>({
                             })
                         };
                     }else if (votedata.vote === 'UPVOTE'){
-                        const existDownVote = vent.votes.find((vote)=> vote.vote ==='DOWNVOTE');
+                        const existDownVote = vent.votes.find(
+                            (vote) => vote.user_id === user_id && vote.vote === 'DOWNVOTE'
+                        );
                         return{
                             ...vent,
                             upvote: Number(vent.upvote) + 1,
@@ -161,7 +163,10 @@ downVote: (id, user_id, votedata) => {
                             })
                         };
                     }else if (votedata.vote === 'DOWNVOTE'){
-                        const existUpVote = vent.votes.find((vote)=> vote.vote ==='UPVOTE');
+                                                const existUpVote = vent.votes.find(
+                                (vote) => vote.user_id === user_id && vote.vote === 'UPVOTE'
+                            );
+
                         return{
                             ...vent,
                             downvote: Number(vent.downvote) + 1,

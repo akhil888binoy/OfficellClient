@@ -93,57 +93,45 @@ const ventStore=(set,get): VentState=>({
             mediaType: data
         })
     },
- upVote: (id, user_id, votedata) => {
-        const vents = get().vents;
-            const updatedVents = vents.map((vent) => {
-                if (vent.id === id) {
-                    if (votedata.vote ==='NOVOTE'){
-                        return {
-                            ...vent,
-                            upvote: Number(vent.upvote) - 1,
-                            votes: vent.votes.map((vote)=>{
-                                if( vote.user_id === user_id){
-                                    return{
-                                        ...vote,
-                                        vote:'NOVOTE'
-                                    }
-                                }
-                                return vote
-                            })
-                        };
-                    }else if (votedata.vote === 'UPVOTE'){
-                        const existDownVote = vent.votes.find(
-                            (vote) => vote.user_id === user_id && vote.vote === 'DOWNVOTE'
-                        );
-                        return{
-                            ...vent,
-                            upvote: Number(vent.upvote) + 1,
-                            downvote: existDownVote ? Number(vent.downvote) - 1 : Number(vent.downvote),
-                            votes: (() => {
-                                let userFound = false;
-                                const updatedVotes = vent.votes.map((vote) => {
-                                    if( vote.user_id === user_id){
-                                        userFound = true;
-                                        return{
-                                            ...vote,
-                                            vote:'UPVOTE'
-                                        }
-                                    }
-                                    return vote
-                                });
-                                
-                                if (!userFound) {
-                                    return [...updatedVotes, votedata];
-                                }
-                                return updatedVotes;
-                            })()
-                        }
-                    }
+upVote: (id, user_id, votedata) => {
+    const vents = get().vents;
+    const updatedVents = vents.map((vent) => {
+        if (vent.id === id) {
+            const existingVote = vent.votes.find(v => v.user_id === user_id)?.vote || 'NOVOTE';
+
+            let upvote = Number(vent.upvote);
+            let downvote = Number(vent.downvote);
+
+            // Remove previous vote effect
+            if (existingVote === 'UPVOTE') upvote -= 1;
+            if (existingVote === 'DOWNVOTE') downvote -= 1;
+
+            // Apply new vote effect
+            if (votedata.vote === 'UPVOTE') upvote += 1;
+            if (votedata.vote === 'DOWNVOTE') downvote += 1;
+
+            // Update votes array
+            let userFound = false;
+            const updatedVotes = vent.votes.map(v => {
+                if (v.user_id === user_id) {
+                    userFound = true;
+                    return {...v, vote: votedata.vote};
                 }
-                return vent;
+                return v;
             });
-                set({ vents: updatedVents });
-            }, 
+            if (!userFound) updatedVotes.push(votedata);
+
+            return {
+                ...vent,
+                upvote,
+                downvote,
+                votes: updatedVotes
+            };
+        }
+        return vent;
+    });
+    set({ vents: updatedVents });
+},
 downVote: (id, user_id, votedata) => {
         const vents = get().vents;
             const updatedVents = vents.map((vent) => {

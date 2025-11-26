@@ -93,53 +93,61 @@ const ventStore=(set,get): VentState=>({
             mediaType: data
         })
     },
- upVote: (id, user_id, votedata) => {
-    const vents = get().vents;
+upVote: (id, user_id, votedata) => {
+  const vents = get().vents;
 
-    const updatedVents = vents.map((vent) => {
-        if (vent.id !== id) return vent;
+  const updatedVents = vents.map((vent) => {
+    if (vent.id !== id) return vent;
 
-        const existingVote = vent.votes.find(v => v.user_id === user_id)?.vote || 'NOVOTE';
-        let upvote = Number(vent.upvote);
-        let downvote = Number(vent.downvote);
-        let updatedVotes = vent.votes.map(v => ({ ...v })); // clone votes
+    const existingVote = vent.votes.find(v => v.user_id === user_id)?.vote || 'NOVOTE';
+    let upvote = Number(vent.upvote);
+    let downvote = Number(vent.downvote);
+    let updatedVotes = vent.votes.map(v => ({ ...v })); // clone votes
 
-        if (existingVote === 'UPVOTE') {
-            // Clicking upvote again → remove vote
-            upvote -= 1;
-            updatedVotes = updatedVotes.map(v =>
-                v.user_id === user_id ? { ...v, vote: 'NOVOTE' } : v
-            );
-        } else if (existingVote === 'DOWNVOTE') {
-            // Switching from downvote → upvote
-            upvote += 1;
-            downvote -= 1;
-            updatedVotes = updatedVotes.map(v =>
-                v.user_id === user_id ? { ...v, vote: 'UPVOTE' } : v
-            );
-        } else if (existingVote === 'NOVOTE') {
-            // First-time upvote
-            upvote += 1;
-            if (!vent.votes.some(v => v.user_id === user_id)) {
-                updatedVotes.push(votedata);
-            } else {
-                updatedVotes = updatedVotes.map(v =>
-                    v.user_id === user_id ? { ...v, vote: 'UPVOTE' } : v
-                );
-            }
+    if (votedata.vote === 'UPVOTE') {
+      if (existingVote === 'UPVOTE') {
+        // Clicking upvote again → remove vote
+        upvote -= 1;
+        updatedVotes = updatedVotes.map(v =>
+          v.user_id === user_id ? { ...v, vote: 'NOVOTE' } : v
+        );
+      } else if (existingVote === 'DOWNVOTE') {
+        // Switching from downvote → upvote
+        upvote += 1;
+        downvote -= 1;
+        updatedVotes = updatedVotes.map(v =>
+          v.user_id === user_id ? { ...v, vote: 'UPVOTE' } : v
+        );
+      } else if (existingVote === 'NOVOTE') {
+        // First-time upvote
+        upvote += 1;
+        if (!vent.votes.some(v => v.user_id === user_id)) {
+          updatedVotes.push(votedata);
+        } else {
+          updatedVotes = updatedVotes.map(v =>
+            v.user_id === user_id ? { ...v, vote: 'UPVOTE' } : v
+          );
         }
+      }
+    } else if (votedata.vote === 'NOVOTE') {
+      // Remove vote
+      if (existingVote === 'UPVOTE') upvote -= 1;
+      if (existingVote === 'DOWNVOTE') downvote -= 1;
+      updatedVotes = updatedVotes.map(v =>
+        v.user_id === user_id ? { ...v, vote: 'NOVOTE' } : v
+      );
+    }
 
-        return {
-            ...vent,
-            upvote,
-            downvote,
-            votes: updatedVotes
-        };
-    });
+    return {
+      ...vent,
+      upvote,
+      downvote,
+      votes: updatedVotes
+    };
+  });
 
-    set({ vents: updatedVents });
+  set({ vents: updatedVents });
 },
-
 downVote: (id, user_id, votedata) => {
         const vents = get().vents;
             const updatedVents = vents.map((vent) => {

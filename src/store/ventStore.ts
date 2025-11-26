@@ -97,15 +97,29 @@ upVote: (id, user_id, votedata) => {
     const vents = get().vents;
     const updatedVents = vents.map((vent) => {
         if (vent.id === id) {
-            // Find existing vote by this user
-            const existingVote = vent.votes.find((vote) => vote.user_id === user_id);
             
+            // 1. Find the existing vote for the current user
+            const existingVote = vent.votes.find(
+                (vote) => vote.user_id === user_id
+            );
+            const currentVoteStatus = existingVote ? existingVote.vote : 'NOVOTE';
+            
+            // Initializing count adjustments
+            let upvoteChange = 0;
+            let downvoteChange = 0;
+            
+            // --- Logic for when the new vote is 'NOVOTE' (Undoing an UPVOTE) ---
             if (votedata.vote === 'NOVOTE'){
+                if (currentVoteStatus === 'UPVOTE') {
+                    upvoteChange = -1; // Decrement upvote count
+                }
+                
                 return {
                     ...vent,
-                    upvote: Number(vent.upvote) - 1,
+                    upvote: Number(vent.upvote) + upvoteChange,
+                    downvote: Number(vent.downvote), // No change to downvote count
                     votes: vent.votes.map((vote)=>{
-                        if(vote.user_id === user_id){
+                        if( vote.user_id === user_id){
                             return{
                                 ...vote,
                                 vote:'NOVOTE'
@@ -114,21 +128,29 @@ upVote: (id, user_id, votedata) => {
                         return vote
                     })
                 };
+            
+            // --- Logic for when the new vote is 'UPVOTE' ---
             } else if (votedata.vote === 'UPVOTE'){
-                // Check if user already has an UPVOTE - if so, don't increment again
-                const hadUpvote = existingVote?.vote === 'UPVOTE';
-                const hadDownvote = existingVote?.vote === 'DOWNVOTE';
-                
+                // If already UPVOTE, we do nothing to the counter (this prevents spamming issue)
+                if (currentVoteStatus === 'UPVOTE') {
+                    upvoteChange = 0;
+                    downvoteChange = 0; // The client-side should ideally prevent the call in this case (vote === 'UPVOTE' && voteenum === 'NOVOTE'), but this provides a safeguard.
+                } else if (currentVoteStatus === 'DOWNVOTE') {
+                    upvoteChange = 1; // Change from DOWNVOTE to UPVOTE
+                    downvoteChange = -1; // Decrement downvote count
+                } else if (currentVoteStatus === 'NOVOTE') {
+                    upvoteChange = 1; // Change from NOVOTE to UPVOTE
+                    downvoteChange = 0;
+                }
+
                 return{
                     ...vent,
-                    // Only increment if user didn't already have an upvote
-                    upvote: hadUpvote ? Number(vent.upvote) : Number(vent.upvote) + 1,
-                    // Decrement downvote if user had a downvote
-                    downvote: hadDownvote ? Number(vent.downvote) - 1 : Number(vent.downvote),
+                    upvote: Number(vent.upvote) + upvoteChange,
+                    downvote: Number(vent.downvote) + downvoteChange,
                     votes: (() => {
                         let userFound = false;
                         const updatedVotes = vent.votes.map((vote) => {
-                            if(vote.user_id === user_id){
+                            if( vote.user_id === user_id){
                                 userFound = true;
                                 return{
                                     ...vote,
@@ -139,6 +161,7 @@ upVote: (id, user_id, votedata) => {
                         });
                         
                         if (!userFound) {
+                            // Only add the new vote if the user didn't have any vote yet
                             return [...updatedVotes, votedata];
                         }
                         return updatedVotes;

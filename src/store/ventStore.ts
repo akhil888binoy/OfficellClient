@@ -94,56 +94,56 @@ const ventStore=(set,get): VentState=>({
         })
     },
  upVote: (id, user_id, votedata) => {
-    const vents = get().vents;
-    const updatedVents = vents.map((vent) => {
-        if (vent.id === id) {
-            const existingVote = vent.votes.find(v => v.user_id === user_id)?.vote || 'NOVOTE';
-            
-            if (votedata.vote === 'NOVOTE') {
-                // Removing an upvote
-                return {
-                    ...vent,
-                    upvote: existingVote === 'UPVOTE' ? Number(vent.upvote) - 1 : Number(vent.upvote),
-                    votes: vent.votes.map((vote) => {
-                        if (vote.user_id === user_id) {
-                            return { ...vote, vote: 'NOVOTE' };
+        const vents = get().vents;
+            const updatedVents = vents.map((vent) => {
+                if (vent.id === id) {
+                    if (votedata.vote ==='NOVOTE'){
+                        return {
+                            ...vent,
+                            upvote: Number(vent.upvote) - 1,
+                            votes: vent.votes.map((vote)=>{
+                                if( vote.user_id === user_id){
+                                    return{
+                                        ...vote,
+                                        vote:'NOVOTE'
+                                    }
+                                }
+                                return vote
+                            })
+                        };
+                    }else if (votedata.vote === 'UPVOTE'){
+                        const existDownVote = vent.votes.find(
+                            (vote) => vote.user_id === user_id && vote.vote === 'DOWNVOTE'
+                        );
+                        return{
+                            ...vent,
+                            upvote: Number(vent.upvote) + 1,
+                            downvote: existDownVote ? Number(vent.downvote) - 1 : Number(vent.downvote),
+                            votes: (() => {
+                                let userFound = false;
+                                const updatedVotes = vent.votes.map((vote) => {
+                                    if( vote.user_id === user_id){
+                                        userFound = true;
+                                        return{
+                                            ...vote,
+                                            vote:'UPVOTE'
+                                        }
+                                    }
+                                    return vote
+                                });
+                                
+                                if (!userFound) {
+                                    return [...updatedVotes, votedata];
+                                }
+                                return updatedVotes;
+                            })()
                         }
-                        return vote;
-                    })
-                };
-            } else if (votedata.vote === 'UPVOTE') {
-                const existDownVote = existingVote === 'DOWNVOTE';
-                const existUpVote = existingVote === 'UPVOTE';
-
-                return {
-                    ...vent,
-                    upvote: existUpVote ? Number(vent.upvote) - 1 : Number(vent.upvote) + 1,
-                    downvote: existDownVote ? Number(vent.downvote) - 1 : Number(vent.downvote),
-                    votes: (() => {
-                        let userFound = false;
-                        const updatedVotes = vent.votes.map((vote) => {
-                            if (vote.user_id === user_id) {
-                                userFound = true;
-                                return {
-                                    ...vote,
-                                    vote: existUpVote ? 'NOVOTE' : 'UPVOTE'
-                                };
-                            }
-                            return vote;
-                        });
-
-                        if (!userFound) {
-                            return [...updatedVotes, votedata];
-                        }
-                        return updatedVotes;
-                    })()
-                };
-            }
-        }
-        return vent;
-    });
-    set({ vents: updatedVents });
-},
+                    }
+                }
+                return vent;
+            });
+                set({ vents: updatedVents });
+            }, 
 downVote: (id, user_id, votedata) => {
         const vents = get().vents;
             const updatedVents = vents.map((vent) => {

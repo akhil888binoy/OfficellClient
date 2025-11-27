@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import DecryptedText from "../styles/DecryptedText"
 import ScrollVelocity from "../styles/ScrollVelocity";
 
 export const LandingPage = () => {
@@ -10,16 +9,9 @@ export const LandingPage = () => {
     <div className="bg-gray-950 w-screen min-h-screen">
     <div className="flex items-center justify-between ">
     {/* LEFT: Officell Text */}
-    <DecryptedText
-        text="⟢ OFFICELL"
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-arimo text-white font-bold tracking-[-0.07em]"
-        encryptedClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-arimo text-white font-bold tracking-[-0.09em]"
-        parentClassName=""
-        animateOn="view"
-        speed={75}
-        characters="ABCDEFGHIJKLMNOPQRST"
-        maxIterations={20}
-    />
+    <h1 className="text-4xl mt-4 font-arimo text-white font-bold tracking-tight">
+            ⟢ OFFICELL
+    </h1>
     {/* RIGHT: Punch In Button */}
     <button
         onClick={() => navigate("/login")}

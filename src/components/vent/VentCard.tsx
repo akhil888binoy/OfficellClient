@@ -129,6 +129,7 @@ const handleDownvote=async ()=>{
           setIsUpVote(true);
           setIsDownVote(false);
         }
+        console.log("Existing Vote", vote?.vote);
         console.log("VOTEENUM ", voteenum);
         upVote(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         upVoteProfile(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});

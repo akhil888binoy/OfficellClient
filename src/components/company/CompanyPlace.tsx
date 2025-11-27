@@ -67,7 +67,7 @@ const CompanyPlace = () => {
         classNamePrefix: "region-",
         onChange: (value) => {
           setRegion(value ? value : undefined)
-          console.log("Region",value)
+          
         },
       }}
     />

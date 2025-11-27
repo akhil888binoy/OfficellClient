@@ -265,7 +265,6 @@ export const CompaniesPage = () => {
                       resetCompanies();
                       setCountry(value ? value : undefined);
                       setRegion(null);
-                      console.log("Country", value);
                     },
                   }}
                 />
@@ -287,7 +286,6 @@ export const CompaniesPage = () => {
                     onChange: (value) => {
                       resetCompanies();
                       setRegion(value ? value : undefined);
-                      console.log("Region", value);
                     },
                   }}
                 />

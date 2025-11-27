@@ -461,14 +461,7 @@ transition-all sm:rounded-2xl
 
       {/* Footer */}
       <div className="bg-gray-950 px-4 sm:px-6 py-3 flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0 border-t border-gray-800">
-        <button
-          type="button"
-          onClick={() => setOpenCategory(false)}
-          className="w-full sm:w-auto inline-flex justify-center rounded-md bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-950 transition"
-        >
-          Choose
-        </button>
-
+       
         <button
           type="button"
           onClick={() => {
@@ -479,6 +472,14 @@ transition-all sm:rounded-2xl
         >
           Cancel
         </button>
+         <button
+          type="button"
+          onClick={() => setOpenCategory(false)}
+          className="w-full sm:w-auto inline-flex justify-center rounded-md bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-950 transition"
+        >
+          Choose
+        </button>
+
       </div>
     </DialogPanel>
   </div>
@@ -598,13 +599,7 @@ transition-all sm:rounded-2xl
 
       {/* Footer */}
       <div className="bg-gray-950 px-4 sm:px-6 py-3 flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 sm:gap-0 border-t border-gray-800">
-        <button
-          type="button"
-          onClick={() => setOpenCompanies(false)}
-          className="w-full sm:w-auto inline-flex justify-center rounded-md bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-950 transition"
-        >
-          Choose
-        </button>
+       
 
         <button
           type="button"
@@ -615,6 +610,13 @@ transition-all sm:rounded-2xl
           className="w-full sm:w-auto inline-flex justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20 transition"
         >
           Cancel
+        </button>
+         <button
+          type="button"
+          onClick={() => setOpenCompanies(false)}
+          className="w-full sm:w-auto inline-flex justify-center rounded-md bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-950 transition"
+        >
+          Choose
         </button>
       </div>
     </DialogPanel>

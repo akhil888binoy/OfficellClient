@@ -131,10 +131,10 @@ const handleDownvote=async ()=>{
         }
         console.log("Existing Vote", vote?.vote);
         console.log("VOTEENUM ", voteenum);
-        upVote(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        upVoteProfile(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        upVoteTrending(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        upVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
+        upVote(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        upVoteProfile(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        upVoteTrending(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        upVoteCompany(id , user_id, { vent_id: id, user_id, vote: voteenum });
         await axios.post(`${import.meta.env.VITE_API}/vents/${id}/upvote`,"",{
             withCredentials: true
         });

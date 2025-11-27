@@ -83,10 +83,10 @@ const handleDownvote=async ()=>{
           setIsDownVote(true);
           setIsUpVote(false);
         }
-        downVote(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        downVoteProfile(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        downVoteTrending(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
-        downVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
+        downVote(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        downVoteProfile(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        downVoteTrending(id , user_id, { vent_id: id, user_id, vote: voteenum });
+        downVoteCompany(id , user_id, { vent_id: id, user_id, vote: voteenum });
       await axios.post(`${import.meta.env.VITE_API}/vents/${id}/downvote`,"",{
           withCredentials: true
       });

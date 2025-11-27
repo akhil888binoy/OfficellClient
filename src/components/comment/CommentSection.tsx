@@ -76,7 +76,7 @@ export const CommentSection = ({ vent_id }: CommentSectionProps) => {
                       respectReducedMotion={true}
                     />
                   </div>
-          </div>: 
+       : 
       <>
       {/* Comment Input Styled like PostCard */}
       <div className="w-full  bg-gray-950  border-b-1 border-gray-700">

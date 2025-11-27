@@ -95,7 +95,7 @@ export const Sidebar = () => {
             ⟢ OFFICELL
           </h1>
 
-          <ul className="space-y-5 font-medium mt-5">
+          <ul className="space-y-1 font-medium ">
 
             {/* Feed */}
             <li>

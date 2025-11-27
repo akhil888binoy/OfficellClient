@@ -139,19 +139,21 @@ export const VentDetailsPage = () => {
           <div className="space-y-4 ">
           {vent &&  <CommentSection vent_id ={vent.id}></CommentSection> }
               {loading && !vent && 
-              <Shuffle
-                          text="⟢ OFFICELL"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
-                          shuffleDirection="right"
-                          duration={0.35}
-                          animationMode="evenodd"
-                          shuffleTimes={1}
-                          ease="power3.out"
-                          stagger={0.03}
-                          threshold={0.1}
-                          loop={true}
-                          respectReducedMotion={true}
-            />
+               <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="⟢ OFFICELL"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>
             }
               {!loading && comments.length === 0 && vent && (
                 <div className="text-center text-gray-500 py-6">
@@ -175,19 +177,21 @@ export const VentDetailsPage = () => {
           ))}
 
               {/* Loading more indicator */}
-                  {loadingMore &&  <Shuffle
-                          text="⟢ OFFICELL"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
-                          shuffleDirection="right"
-                          duration={0.35}
-                          animationMode="evenodd"
-                          shuffleTimes={1}
-                          ease="power3.out"
-                          stagger={0.03}
-                          threshold={0.1}
-                          loop={true}
-                          respectReducedMotion={true}
-            />}
+                  {loadingMore &&   <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="⟢ OFFICELL"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>}
                                      {/* End of results message */}
                                     {!hasMore && comments.length > 0 && (
                                         <div className="text-center text-gray-400 py-6 flex justify-center items-center space-x-2">

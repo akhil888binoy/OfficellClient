@@ -181,19 +181,21 @@ useEffect(() => {
                                     
                                      {/* Loading more indicator */}
                                     {loadingMore || loading && 
-                                              <Shuffle
-                                                text="⟢ OFFICELL"
-                                                className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
-                                                shuffleDirection="right"
-                                                duration={0.35}
-                                                animationMode="evenodd"
-                                                shuffleTimes={1}
-                                                ease="power3.out"
-                                                stagger={0.03}
-                                                threshold={0.1}
-                                                loop={true}
-                                                respectReducedMotion={true}
-                                  />
+                                  <div className="flex justify-center items-center py-10 w-full">
+                                    <Shuffle
+                                      text="⟢ OFFICELL"
+                                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                                      shuffleDirection="right"
+                                      duration={0.35}
+                                      animationMode="evenodd"
+                                      shuffleTimes={1}
+                                      ease="power3.out"
+                                      stagger={0.03}
+                                      threshold={0.1}
+                                      loop={true}
+                                      respectReducedMotion={true}
+                                    />
+                                  </div>
                                   }
                                     
                                      {/* End of results message */}

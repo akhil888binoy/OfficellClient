@@ -154,19 +154,22 @@ useEffect(() => {
         <div className="flex-1 bg-gray-950 overflow-y-scroll " onScroll={handleScroll}>
           
             <PostCard />
-            {loading && vents.length === 0 &&  <Shuffle
-                                      text="⟢ OFFICELL"
-                                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] md:ml-4 lg:ml-80"
-                                      shuffleDirection="right"
-                                      duration={0.35}
-                                      animationMode="evenodd"
-                                      shuffleTimes={1}
-                                      ease="power3.out"
-                                      stagger={0.03}
-                                      threshold={0.1}
-                                      loop={true}
-                                      respectReducedMotion={true}
-                              />}
+            {loading && vents.length === 0 && 
+             <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="⟢ OFFICELL"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>}
                     {/* Error message */}
                       {error && (
                         <div className="text-red-500 text-center p-4">
@@ -202,19 +205,21 @@ useEffect(() => {
                       ))}
                       
                       {/* Loading more indicator */}
-                      {loadingMore && <Shuffle
-                          text="⟢ OFFICELL"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
-                          shuffleDirection="right"
-                          duration={0.35}
-                          animationMode="evenodd"
-                          shuffleTimes={1}
-                          ease="power3.out"
-                          stagger={0.03}
-                          threshold={0.1}
-                          loop={true}
-                          respectReducedMotion={true}
-                    />}
+                      {loadingMore &&  <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="⟢ OFFICELL"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>}
                       
                       {/* End of results message */}
                       {!hasMore && vents.length > 0 && (

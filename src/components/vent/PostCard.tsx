@@ -241,21 +241,21 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
     <div className="w-full  bg-gray-950 ">
       {/* Input */}
       {postloading ? 
-      <div className="px-3 sm:px-6 lg:px-10 pt-4 sm:pt-5 pb-2 ">
-                        <Shuffle
-                          text="spilling the tea"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl lg:text-[70px] lg:ml-55"
-                          shuffleDirection="right"
-                          duration={0.35}
-                          animationMode="evenodd"
-                          shuffleTimes={1}
-                          ease="power3.out"
-                          stagger={0.03}
-                          threshold={0.1}
-                          loop={true}
-                          respectReducedMotion={true}
-            />
-            </div>
+      <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="splling the tea"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>
             : 
       <>
       <div className="px-3 sm:px-6 lg:px-10 pt-4 sm:pt-5 pb-2 ">

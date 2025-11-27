@@ -61,20 +61,21 @@ export const CommentSection = ({ vent_id }: CommentSectionProps) => {
       <ToastContainer></ToastContainer>
 
       {loading ?   
-              <div className="px-3 sm:px-4 pt-3 sm:pt-4 pb-2 ">
-                      <Shuffle
-                          text="Thanks for the support"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-3xl lg:text-[40px] lg:ml-65"
-                          shuffleDirection="right"
-                          duration={0.35}
-                          animationMode="evenodd"
-                          shuffleTimes={1}
-                          ease="power3.out"
-                          stagger={0.03}
-                          threshold={0.1}
-                          loop={true}
-                          respectReducedMotion={true}
-            />
+              <div className="flex justify-center items-center py-10 w-full">
+                    <Shuffle
+                      text="Thanks for the support"
+                      className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
+                      shuffleDirection="right"
+                      duration={0.35}
+                      animationMode="evenodd"
+                      shuffleTimes={1}
+                      ease="power3.out"
+                      stagger={0.03}
+                      threshold={0.1}
+                      loop={true}
+                      respectReducedMotion={true}
+                    />
+                  </div>
           </div>: 
       <>
       {/* Comment Input Styled like PostCard */}

@@ -89,7 +89,7 @@ export const Sidebar = () => {
           ${open ? "translate-x-0" : "-translate-x-full"} 
           sm:translate-x-0`}
       >
-        <div className="h-full px-3 py-4 flex flex-col justify-start">
+        <div className="h-full px-3 py-4 flex flex-col justify-between">
           {/* Logo */}
           <h1 className="text-4xl mt-4 font-arimo text-white font-bold tracking-tight">
             ⟢ OFFICELL

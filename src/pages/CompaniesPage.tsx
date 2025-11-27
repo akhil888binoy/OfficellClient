@@ -184,7 +184,7 @@ export const CompaniesPage = () => {
           {loading && companies?.length === 0 && 
                     <Shuffle
                           text="⟢ OFFICELL"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-5xl sm:text-4xl md:text-6xl lg:text-[70px] lg:ml-80"
+                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
                           shuffleDirection="right"
                           duration={0.35}
                           animationMode="evenodd"
@@ -223,7 +223,7 @@ export const CompaniesPage = () => {
           {loadingMore &&  <Shuffle
 
                           text="⟢ OFFICELL"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-5xl sm:text-4xl md:text-6xl lg:text-[70px] lg:ml-80"
+                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px] lg:ml-80"
                           shuffleDirection="right"
                           duration={0.35}
                           animationMode="evenodd"

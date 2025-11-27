@@ -244,7 +244,7 @@ const handleAddCategory = (e: React.MouseEvent<HTMLButtonElement>) => {
       <div className="px-3 sm:px-6 lg:px-10 pt-4 sm:pt-5 pb-2 ">
                         <Shuffle
                           text="spilling the tea"
-                          className="font-arimo text-white font-bold tracking-[-0.001em] text-4xl lg:text-[70px] lg:ml-55"
+                          className="font-arimo text-white font-bold tracking-[-0.001em] text-xl lg:text-[70px] lg:ml-55"
                           shuffleDirection="right"
                           duration={0.35}
                           animationMode="evenodd"
@@ -521,7 +521,7 @@ transition-all sm:rounded-2xl
           <div className="flex justify-center items-center h-full">
             <Shuffle
               text="⟢ OFFICELL"
-              className="font-arimo text-white font-bold tracking-[-0.001em] text-4xl sm:text-5xl md:text-6xl lg:text-[70px]"
+              className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
               shuffleDirection="right"
               duration={0.35}
               animationMode="evenodd"
@@ -571,7 +571,7 @@ transition-all sm:rounded-2xl
           <div className="flex justify-center py-4">
             <Shuffle
               text="⟢ OFFICELL"
-              className="font-arimo text-white font-bold tracking-[-0.001em] text-4xl sm:text-5xl md:text-6xl lg:text-[70px]"
+              className="font-arimo text-white font-bold tracking-[-0.001em] text-xl sm:text-xl md:text-6xl lg:text-[70px]"
               shuffleDirection="right"
               duration={0.35}
               animationMode="evenodd"

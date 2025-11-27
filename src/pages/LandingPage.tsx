@@ -9,14 +9,14 @@ export const LandingPage = () => {
     <div className="bg-gray-950 w-screen min-h-screen">
     <div className="flex items-center justify-between ">
     {/* LEFT: Officell Text */}
-    <h1 className="text-3xl lg:mt-4 ml-2 lg:ml-3 lg:text-6xl font-arimo text-white font-bold tracking-tight">
+    <h1 className="text-2xl lg:mt-4 ml-2 lg:ml-3 lg:text-6xl font-arimo text-white font-bold tracking-tight">
             ⟢ OFFICELL
     </h1>
     {/* RIGHT: Punch In Button */}
     <button
         onClick={() => navigate("/login")}
         className="
-            lg:text-5xl text-3xl
+            lg:text-5xl text-2xl
             lg:px-10 px-6
             lg:py-2 py-1.5
             bg-white text-gray-950

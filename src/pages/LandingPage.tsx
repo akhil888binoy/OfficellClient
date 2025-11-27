@@ -9,7 +9,7 @@ export const LandingPage = () => {
     <div className="bg-gray-950 w-screen min-h-screen">
     <div className="flex items-center justify-between ">
     {/* LEFT: Officell Text */}
-    <h1 className="text-4xl mt-4 font-arimo text-white font-bold tracking-tight">
+    <h1 className="text-4xl mt-4 lg:ml-3 lg:text-6xl font-arimo text-white font-bold tracking-tight">
             ⟢ OFFICELL
     </h1>
     {/* RIGHT: Punch In Button */}

@@ -136,7 +136,6 @@ const handleDownvote=async ()=>{
         upVoteCompany(id , author_id, {vent_id : id , user_id : user_id , vote: voteenum});
         await axios.post(`${import.meta.env.VITE_API}/vents/${id}/upvote`,"",{
             withCredentials: true
-
         });
         setDisableSubmitBtn(false);
     } catch (error) {

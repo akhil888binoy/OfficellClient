@@ -156,7 +156,7 @@ export const CompaniesPage = () => {
   return (
     <div className="w-screen h-screen flex bg-gray-950">
       {/* Sidebar */}
-      <div className="h-screen border-r-1 border-gray-700">
+      <div className="h-screen border-r-1 border-gray-700 w-64">
         <Sidebar />
         <CompanyCategoryM 
           category={category}
@@ -164,7 +164,6 @@ export const CompaniesPage = () => {
             logout()
             addcategory(q)
           }} />
-
           <RefreshCompanies></RefreshCompanies>
       </div>
       

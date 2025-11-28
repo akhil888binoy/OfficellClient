@@ -43,19 +43,19 @@ const RefreshCompanies = () => {
     
     return (
         <>
-            { refreshButton && pathname =="/companies" &&
+            { refreshButton && pathname ==="/companies" &&
                 <button
                 onClick={handleRefresh}
-                className="w-55 border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-white active:bg-white active:text-black hover:text-black transition duration-200 whitespace-nowrap"
+                className=" w-55 border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-white active:bg-white active:text-black hover:text-black transition duration-200 whitespace-nowrap"
                 >
                     New Companies
                 </button>
             }
         {
-            refreshButton && pathname =="/companies" && 
+            refreshButton && pathname ==="/companies" && 
             <button
                 onClick={handleRefresh}
-                className={` landscape:hidden items-center justify-center ms-3 mt-2 p-2 
+                className={`landscape:hidden items-center justify-center ms-3 mt-2 p-2 
                 hover:bg-gray-800 active:scale-95 transition text-sm sm:hidden
                 focus:outline-none focus:ring-2 focus:ring-gray-200 `}
                     >

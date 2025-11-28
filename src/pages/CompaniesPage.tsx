@@ -101,13 +101,10 @@ export const CompaniesPage = () => {
           addloadingMore(true);
         }
         
-       
         const { data: companiesJson } = await axios.get(`${import.meta.env.VITE_API}/companies?skip=${skip}&company_name=${search}&industry=${category}&place=${region ? region.value:''}&searchcountry=${country? country.key:''}`, {
-         signal: controller.signal , withCredentials: true
+          signal: controller.signal , withCredentials: true
         });
-        
         const newCompanies = companiesJson.companies;
-        
         // Check if we've reached the end of the list
         if (newCompanies.length < PAGE_SIZE) {
               addHasMore(false);  

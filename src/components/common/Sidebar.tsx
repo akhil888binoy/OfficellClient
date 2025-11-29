@@ -150,7 +150,6 @@ export const Sidebar = () => {
           <div className="flex flex-col items-center space-y-7">
             <RefreshFeed />
             <RefreshCompanies />
-
             <button
               onClick={handleLogout}
               className="w-55 border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold hover:bg-white hover:text-black transition"

@@ -35,7 +35,7 @@ const RefreshCompanies = () => {
                     if (companies.length > 0) {
                     fetchDbCompanies();
                     }
-                }, 10000);
+                }, 1000);
 
                 return () => clearInterval(interval);
                     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -5,7 +5,6 @@ import useCompanyVentStore from "../../store/companyventStore";
 import useProfileVentStore from "../../store/profileventStore";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { IoRefreshCircleOutline } from "react-icons/io5";
 
 const RefreshFeed = () => {
 
@@ -53,22 +52,20 @@ const RefreshFeed = () => {
     return (
         <>
             { refreshButton && pathname != "/companies" &&
-                <button
+               <button
                 onClick={handleRefresh}
-                className="portrait:hidden w-55 border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-white active:bg-white active:text-black hover:text-black transition duration-200 whitespace-nowrap"
+                className="
+                    border border-white text-white 
+                    px-6 py-2 text-sm                     /* Mobile */
+                    sm:px-8 sm:py-2.5 sm:text-base        /* Tablet */
+                    md:px-10 md:py-3 md:text-base         /* Laptop/Desktop */
+
+                    rounded-full tracking-widest uppercase font-semibold
+                    hover:bg-white hover:text-black transition
+                "
                 >
-                New Feeds
+                    New Feeds
                 </button>
-            }
-            {refreshButton && pathname != "/companies" &&
-            <button
-            onClick={handleRefresh}
-            className={` landscape:hidden items-center justify-center ms-3 mt-2 p-2 
-                hover:bg-gray-800 active:scale-95 transition text-sm sm:hidden
-                focus:outline-none focus:ring-2 focus:ring-gray-200 `}
-            >
-                <IoRefreshCircleOutline className="text-white w-full h-6 "/>
-            </button>
             }
             </>
         )

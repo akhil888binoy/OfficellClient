@@ -27,17 +27,18 @@ const RefreshCompanies = () => {
         const handleRefresh = ()=>{
             refreshCompanies();
             setRefreshButton(false);
-        }
-        
-    useEffect(()=>{
-        setInterval(() => {
-        if (companies.length > 0){
-            fetchDbCompanies();
-        }
-        }, 100000);
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
-    
+                        }
+                    useEffect(() => {
+                const interval = setInterval(() => {
+                    if (companies.length > 0) {
+                    fetchDbCompanies();
+                    }
+                }, 100000);
+
+                return () => clearInterval(interval);
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
+                }, []);
+
     return (
     <>
         {refreshButton && pathname === "/companies" && (

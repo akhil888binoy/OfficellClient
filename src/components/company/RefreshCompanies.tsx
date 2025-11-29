@@ -19,7 +19,9 @@ const RefreshCompanies = () => {
             });
             if (response.count_companies > 10){
                 setRefreshButton(true)
-            }
+            }else {
+                    setRefreshButton(false);
+                }
             } catch (error) {
                 console.error(error);
             }

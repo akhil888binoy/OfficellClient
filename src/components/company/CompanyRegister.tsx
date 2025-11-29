@@ -178,7 +178,7 @@ if(!domain){
         });
     } catch (error) {
       console.error(error);
-      toast.error('Oops Failed to Register! Dont worry its a mistake from our side ', {
+      toast.error('Company already exist', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -195,7 +195,7 @@ if(!domain){
     <ToastContainer></ToastContainer>
   <div className=" mx-auto  lg:p-20 p-10">
   <h2 className="text-4xl sm:text-4xl md:text-6xl lg:text-[40px] mt-4 mb-10 font-dmsans text-white font-semibold tracking-[1px]">
-        Add Company on the Hitlist .
+        Add Company 
   </h2>
         {/* Company Name */}
   <div className="relative z-0 w-full mb-5 group">

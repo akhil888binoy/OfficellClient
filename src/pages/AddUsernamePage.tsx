@@ -67,28 +67,36 @@ export default function AddUsernamePage() {
 
       {/* Username Form */}
       {step === 2 && (
-        <div className="w-full max-w-md bg-gray-950 p-6 shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">Choose your username</h2>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-            className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            onClick={handleNext}
-            disabled={!username.trim()}
-            className={`mt-4 w-full py-3 rounded-lg text-sm font-semibold transition ${
-              username.trim()
-                ? "bg-blue-500 hover:bg-blue-600 text-white"
-                : "bg-gray-700 text-gray-400 cursor-not-allowed"
-            }`}
-          >
-            Continue
-          </button>
-        </div>
-      )}
+  <div className="w-full max-w-md bg-gray-950 p-6 shadow-lg">
+    <h2 className="text-xl font-semibold mb-4">Choose your username</h2>
+
+    <input
+      type="text"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      placeholder="Enter your username"
+      className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    {username.length > 0 && username.length < 5 && (
+      <p className="text-red-500 text-sm mt-2">
+        Username must be at least 5 characters long.
+      </p>
+    )}
+
+    <button
+      onClick={handleNext}
+      disabled={username.trim().length < 5}
+      className={`mt-4 w-full py-3 rounded-lg text-sm font-semibold transition ${
+        username.trim().length >= 5
+          ? "bg-blue-500 hover:bg-blue-600 text-white"
+          : "bg-gray-700 text-gray-400 cursor-not-allowed"
+      }`}
+    >
+      Continue
+    </button>
+  </div>
+)}
 
       {step === 3 && (
         <div className="text-center">

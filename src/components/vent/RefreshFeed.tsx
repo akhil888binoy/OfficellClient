@@ -47,7 +47,7 @@ const RefreshFeed = () => {
             if (vents.length > 0){
                 fetchDbVents();
             }
-        }, 10000);
+        }, 50000);
         return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);

@@ -43,14 +43,7 @@ const RefreshCompanies = () => {
         {refreshButton && pathname === "/companies" && (
             <button
             onClick={handleRefresh}
-            className="
-                fixed bottom-6 left-6 md:left-72
-                border border-white text-white px-12 py-4 
-                rounded-full tracking-widest uppercase font-bold 
-                bg-transparent hover:bg-white active:bg-white 
-                active:text-black hover:text-black transition duration-200 
-                whitespace-nowrap 
-            "
+            className=" border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold hover:bg-white hover:text-black transition"
             >
             New Companies
             </button>

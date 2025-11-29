@@ -13,7 +13,6 @@ import useCompanyVentStore from "../store/companyventStore";
 import useVentStore from "../store/ventStore";
 import useProfileVentStore from "../store/profileventStore";
 import useTrendingVentStore from "../store/trendingventStore";
-import RefreshCompanies from "../components/company/RefreshCompanies";
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import Select from 'react-select';
 
@@ -164,7 +163,6 @@ export const CompaniesPage = () => {
             logout()
             addcategory(q)
           }} />
-          <RefreshCompanies></RefreshCompanies>
       </div>
       
       {/* Main Content */}

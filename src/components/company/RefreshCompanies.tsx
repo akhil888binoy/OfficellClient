@@ -49,7 +49,7 @@ const RefreshCompanies = () => {
                 rounded-full tracking-widest uppercase font-bold 
                 bg-transparent hover:bg-white active:bg-white 
                 active:text-black hover:text-black transition duration-200 
-                whitespace-nowrap z-50
+                whitespace-nowrap 
             "
             >
             New Companies

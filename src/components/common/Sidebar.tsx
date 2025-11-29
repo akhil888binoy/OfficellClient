@@ -151,11 +151,19 @@ export const Sidebar = () => {
             <RefreshFeed />
             <RefreshCompanies />
             <button
-              onClick={handleLogout}
-              className="w-55 border border-white text-white px-12 py-4 rounded-full tracking-widest uppercase font-bold hover:bg-white hover:text-black transition"
-            >
-              Logout
-            </button>
+  onClick={handleLogout}
+  className="
+    border border-white text-white 
+    px-6 py-2 text-sm                /* Mobile size */
+    sm:px-8 sm:py-3 sm:text-base     /* Tablets */
+    md:px-12 md:py-4 md:text-lg      /* Desktop */
+
+    rounded-full tracking-widest uppercase font-bold
+    hover:bg-white hover:text-black transition
+  "
+>
+  Logout
+</button>
           </div>
         </div>
       </aside>

@@ -30,12 +30,12 @@ const RefreshCompanies = () => {
             refreshCompanies();
             setRefreshButton(false);
                         }
-                    useEffect(() => {
+                useEffect(() => {
                 const interval = setInterval(() => {
                     if (companies.length > 0) {
                     fetchDbCompanies();
                     }
-                }, 100);
+                }, 10000);
 
                 return () => clearInterval(interval);
                     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -26,6 +26,8 @@ const RefreshFeed = () => {
             });
             if (response.count_vents > 10){
                 setRefreshButton(true)
+            }else{
+                setRefreshButton(false);
             }
             } catch (error) {
                 console.error(error);
@@ -41,11 +43,12 @@ const RefreshFeed = () => {
         }
 
     useEffect(()=>{
-        setInterval(() => {
-        if (vents.length > 0){
-            fetchDbVents();
-        }
-        }, 100000);
+        const interval= setInterval(() => {
+            if (vents.length > 0){
+                fetchDbVents();
+            }
+        }, 10000);
+        return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

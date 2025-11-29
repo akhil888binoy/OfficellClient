@@ -16,7 +16,6 @@ import { FaSkullCrossbones } from "react-icons/fa";
 import useCompanyVentStore from "../store/companyventStore";
 import { PAGE_SIZE } from "../utils/pagesize";
 import useVentStore from "../store/ventStore";
-import RefreshFeed from "../components/vent/RefreshFeed";
 
 
 export const CompanyDetailsPage = () => {
@@ -123,7 +122,6 @@ useEffect(() => {
             addcategory(q)
           }}  
           />
-        <RefreshFeed></RefreshFeed>
       </div>
       
       {/* Main Content */}

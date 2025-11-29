@@ -15,7 +15,6 @@ import useTrendingVentStore from "../store/trendingventStore";
 import useCompanyStore from "../store/companyStore";
 import useCompanyVentStore from "../store/companyventStore";
 import useProfileVentStore from "../store/profileventStore";
-import RefreshFeed from "../components/vent/RefreshFeed";
 
 
 
@@ -145,7 +144,6 @@ useEffect(() => {
               addcategory(q)
             }} 
       ></CategoryBarM>
-      <RefreshFeed></RefreshFeed>
       </div>
 
       {/* Main Content */}

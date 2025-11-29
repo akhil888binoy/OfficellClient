@@ -12,7 +12,6 @@ import { PAGE_SIZE } from "../utils/pagesize";
 import useCompanyStore from "../store/companyStore";
 import useCompanyVentStore from "../store/companyventStore";
 import useProfileVentStore from "../store/profileventStore";
-import RefreshFeed from "../components/vent/RefreshFeed";
 
 export const TrendingPage = () => {
 
@@ -106,7 +105,6 @@ useEffect(() => {
       {/* Sidebar */}
       <div className="h-screen border-r-1 border-gray-700  " >
       <Sidebar/>
-      <RefreshFeed></RefreshFeed>
       </div>
       {/* Main Content */}
       <div className="flex-1 flex flex-row transition-all duration-300 sm:ml-64">

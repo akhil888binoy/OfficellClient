@@ -15,7 +15,6 @@ import useTrendingVentStore from "../store/trendingventStore";
 import useCompanyStore from "../store/companyStore";
 import useCompanyVentStore from "../store/companyventStore";
 import useVentStore from "../store/ventStore";
-import RefreshFeed from "../components/vent/RefreshFeed";
 
 export const ProfilePage = () => {
 
@@ -136,7 +135,6 @@ export const ProfilePage = () => {
             addcategory(q)
           }}
           ></CategoryBarM>
-        <RefreshFeed></RefreshFeed>
       </div>
       {/* Main Content */}
       <div className="flex-1 flex flex-row transition-all duration-300 sm:ml-64">

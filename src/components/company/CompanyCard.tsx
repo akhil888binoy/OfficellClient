@@ -14,6 +14,14 @@ type CompanyCardProps = {
   domain?: string;
 };
 
+const formatUrl = (url?: string) => {
+  if (!url) return "";
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+  return `https://${url}`;
+};
+
 export const CompanyCard = forwardRef<HTMLDivElement, CompanyCardProps>(
   ({ company_id, city, country, company_name, industry, vents_count, domain }, ref) => {
     return (
@@ -52,20 +60,20 @@ export const CompanyCard = forwardRef<HTMLDivElement, CompanyCardProps>(
 
               {/* Website */}
               {domain && (
-                <div className="flex items-center gap-2 text-gray-400 text-sm ">
-                  <FaGlobe className="text-green-400" />
-                  <a
-                    data-testid="website-link"
-                    onClick={(e) => e.stopPropagation()}
-                    href={domain}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-green-300 transition-colors"
-                  >
-                    {cleanDomain(domain)}
-                  </a>
-                </div>
-              )}
+                    <div className="flex items-center gap-2 text-gray-400 text-sm ">
+                      <FaGlobe className="text-green-400" />
+                      <a
+                        data-testid="website-link"
+                        onClick={(e) => e.stopPropagation()}
+                        href={formatUrl(domain)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-green-300 transition-colors"
+                      >
+                        {cleanDomain(domain)}
+                      </a>
+                    </div>
+                  )}
             </div>
           </div>
         ) : (

@@ -14,9 +14,7 @@ export default function LoginPage() {
         </div>
 
         {/* Title */}
-            <h2 className="mt-6 text-center text-2xl font-arimo font-bold tracking-tight text-white ">
-                Hey Corporate Slave!
-            </h2>
+          
             <p className="mt-1 text-center text-sm text-gray-400">
             Spill the tea | No Name | No Shame
             </p>
